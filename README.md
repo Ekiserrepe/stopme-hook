@@ -82,8 +82,8 @@ HookOn is activated to trigger for Invoke and Payment transactions. You can veri
 When there is no previous backup account in our namespace, we create a Invoke transaction with our Hook Account as "Account" and NO Destination Account. 
 
 Hook Parameters and values will be:
-BACK
-backup_address
+- BACK
+- backup_address
 
 In this example we are using 1E2D42546C8A5270D4E182FAE3D12186F2A32A7E that is the translated version of the address rskZVQvBEXAwsBTFsgEZMBfwnhC7oydSnp. You can visit https://transia-rnd.github.io/xrpl-hex-visualizer/ , Insert the account and click on From Hex, you will see the xrpAddress will be the same as we added. BACK string is HEX translated: 4241434B. (For https://builder.xahau.network/ IDE you don't need to translate Parameter Name)
 
@@ -107,8 +107,8 @@ In this example we are using 1E2D42546C8A5270D4E182FAE3D12186F2A32A7E that is th
 When there is a previous backup account in our namespace and we want to change it, we create a Invoke transaction with the backup account as "Account" and hook account as "Destination".
 
 Hook Parameters and values will be:
-BACK
-new_backup_address
+- BACK
+- new_backup_address
 
 In this example we are using 09BA2DF121D730675E3CA15408B6AC24A481ACF9 that is the translation version of the address rtSf6j9hGRPHLRWiRUYjmoQBD1N2bT8Z1. You can visit https://transia-rnd.github.io/xrpl-hex-visualizer/ , insert the account and click on From Hex, you will see the xrpAddress will be the same as we added. BACK string is HEX translated: 4241434B. (For https://builder.xahau.network/ IDE you don't need to translate Parameter Name)
 
@@ -133,8 +133,8 @@ In this example we are using 09BA2DF121D730675E3CA15408B6AC24A481ACF9 that is th
 When we want to activate the ACTI flag = 1 to stop allowing outgoing paymets from the hook account we generate the next transaction. A Invoke transaction with the backup account as "Account" and hook account as "Destination".
 
 Hook Parameters and values will be:
-ACTI
-01
+- ACTI
+- 01
 
 
     const prepared = {
@@ -158,8 +158,8 @@ ACTI
 When we want to disable the ACTI flag and allowing outgoing paymets from the hook account we generate the next transaction. A Invoke transaction with the backup account as "Account" and hook account as "Destination".
 
 Hook Parameters and values will be:
-ACTI
-00
+- ACTI
+- 00
 
 
     const prepared = {
@@ -183,8 +183,8 @@ ACTI
 When we want to delete the backup account and delete the ACTI flag, we create an Invoke transaction with the backup account as "Account" and hook account as "Destination".
 
 Hook Parameters and values will be:
-DELE
-hook_account Visit https://transia-rnd.github.io/xrpl-hex-visualizer/ to know the HEX translation (xrplAddress).
+- DELE
+- hook_account Visit https://transia-rnd.github.io/xrpl-hex-visualizer/ to know the HEX translation (xrplAddress).
 
 
     const prepared = {
