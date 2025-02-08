@@ -79,13 +79,13 @@ HookOn is activated to trigger for Invoke and Payment transactions. You can veri
 
 ## Adding the backup account for first time
 
-When there is no previous backup account in our namespace, we create a Invoke transaction with our account as "Account". 
+When there is no previous backup account in our namespace, we create a Invoke transaction with our Hook Account as "Account" and NO Destination Account. 
 
 Hook Parameters and values will be:
 BACK
 backup_address
 
-In this example we are using 1E2D42546C8A5270D4E182FAE3D12186F2A32A7E that is the translation version of the address rskZVQvBEXAwsBTFsgEZMBfwnhC7oydSnp. You can visit https://transia-rnd.github.io/xrpl-hex-visualizer/ , insert the account and click on From Hex, you will see the xrpAddress will be the same as we added. BACK string is HEX translated: 4241434B. (For https://builder.xahau.network/ IDE you don't need to translate Parameter Name)
+In this example we are using 1E2D42546C8A5270D4E182FAE3D12186F2A32A7E that is the translated version of the address rskZVQvBEXAwsBTFsgEZMBfwnhC7oydSnp. You can visit https://transia-rnd.github.io/xrpl-hex-visualizer/ , Insert the account and click on From Hex, you will see the xrpAddress will be the same as we added. BACK string is HEX translated: 4241434B. (For https://builder.xahau.network/ IDE you don't need to translate Parameter Name)
 
     const prepared = {
       TransactionType: "Invoke",
