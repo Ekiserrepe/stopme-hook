@@ -29,17 +29,15 @@ If we want to change the backup account for another account, we create an Invoke
 If we want to completely eliminate the administration of the backup account and that the hook account no longer has a manager, we create an Invoke operation with origin the backup account and destination the hook account. As Hook parameter we will add DELE and as value the account translated to HEX where the hook is installed.
 
 
-## Testnet Installation and usage
+## How to install the Stop Me Hook on Mainnet?
 
 HookHash: E31E3F125C377E89ACC76610DD017FBEE434FB5BDAE86DEF3C345B994916C64F
-
-## Mainnet Installation and usage
 
 1. You can do it by (XRPLWin Hook Install Tool)[https://xahau-testnet.xrplwin.com/tools/hook/from-hash]
 
 2. Or you can do it sending the transaction below:
 
-HookOn is activated to trigger for Invoke and Payment transactions. You can verify it copying the HookOn value (0xfffffffffffffffffffffffffffffffffffffff7ffffffffffffffffffbffffe) in this website: https://richardah.github.io/xrpl-hookon-calculator/
+HookOn is activated to trigger for Invoke and Payment transactions. You can verify it copying the HookOn value (FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFFFFFFFFFFFFFBFFFFE) in this website: https://richardah.github.io/xrpl-hookon-calculator/
 
     const prepared = {
       "TransactionType": "SetHook",
@@ -74,6 +72,135 @@ HookOn is activated to trigger for Invoke and Payment transactions. You can veri
     ],
       ...networkInfo.txValues,
     };
+
+## Transaction Examples for Hook Parameters
+
+## Adding the backup account for first time
+
+When there is no previous backup account in our namespace, we create a Invoke transaction with our account as "Account". 
+
+Hook Parameters and values will be:
+BACK
+backup_address
+
+In this example we are using 1E2D42546C8A5270D4E182FAE3D12186F2A32A7E that is the translation version of the address rskZVQvBEXAwsBTFsgEZMBfwnhC7oydSnp. You can visit https://transia-rnd.github.io/xrpl-hex-visualizer/ , insert the account and click on From Hex, you will see the xrpAddress will be the same as we added. BACK string is HEX translated: 4241434B. (For https://builder.xahau.network/ IDE you don't need to translate Parameter Name)
+
+    const prepared = {
+      TransactionType: "Invoke",
+      Account: your_account_address,
+      Flags: 0,
+      HookParameters: [
+        {
+          HookParameter: {
+            HookParameterName: "4241434B",
+            HookParameterValue: "1E2D42546C8A5270D4E182FAE3D12186F2A32A7E",
+          },
+        },
+        ],
+      ...networkInfo.txValues,
+    };
+
+## Adding the backup account AFTER the first time
+
+When there is a previous backup account in our namespace and we want to change it, we create a Invoke transaction with the backup account as "Account" and hook account as "Destination".
+
+Hook Parameters and values will be:
+BACK
+new_backup_address
+
+In this example we are using 09BA2DF121D730675E3CA15408B6AC24A481ACF9 that is the translation version of the address rtSf6j9hGRPHLRWiRUYjmoQBD1N2bT8Z1. You can visit https://transia-rnd.github.io/xrpl-hex-visualizer/ , insert the account and click on From Hex, you will see the xrpAddress will be the same as we added. BACK string is HEX translated: 4241434B. (For https://builder.xahau.network/ IDE you don't need to translate Parameter Name)
+
+    const prepared = {
+      TransactionType: "Invoke",
+      Account: backup_account_address,
+      Flags: 0,
+      Destination: hook_account,
+      HookParameters: [
+        {
+          HookParameter: {
+            HookParameterName: "4241434B",
+            HookParameterValue: "09BA2DF121D730675E3CA15408B6AC24A481ACF9",
+          },
+        },
+        ],
+      ...networkInfo.txValues,
+    };
+
+## Activating Flag (Stop allowing outgoing payments from the hook account)
+
+When we want to activate the ACTI flag = 1 to stop allowing outgoing paymets from the hook account we generate the next transaction. A Invoke transaction with the backup account as "Account" and hook account as "Destination".
+
+Hook Parameters and values will be:
+ACTI
+01
+
+
+    const prepared = {
+      TransactionType: "Invoke",
+      Account: backup_account_address,
+      Flags: 0,
+      Destination: hook_account,
+      HookParameters: [
+        {
+          HookParameter: {
+            HookParameterName: "41435449",
+            HookParameterValue: "01",
+          },
+        },
+        ],
+      ...networkInfo.txValues,
+    };
+
+## Disabling Flag (Allowing outgoing payments from the hook account)
+
+When we want to disable the ACTI flag and allowing outgoing paymets from the hook account we generate the next transaction. A Invoke transaction with the backup account as "Account" and hook account as "Destination".
+
+Hook Parameters and values will be:
+ACTI
+00
+
+
+    const prepared = {
+      TransactionType: "Invoke",
+      Account: backup_account_address,
+      Flags: 0,
+      Destination: hook_account,
+      HookParameters: [
+        {
+          HookParameter: {
+            HookParameterName: "41435449",
+            HookParameterValue: "00",
+          },
+        },
+        ],
+      ...networkInfo.txValues,
+    };
+
+## Deleting Backup Account and Flag
+
+When we want to delete the backup account and delete the ACTI flag, we create an Invoke transaction with the backup account as "Account" and hook account as "Destination".
+
+Hook Parameters and values will be:
+DELE
+hook_account Visit https://transia-rnd.github.io/xrpl-hex-visualizer/ to know the HEX translation (xrplAddress).
+
+
+    const prepared = {
+      TransactionType: "Invoke",
+      Account: backup_account_address,
+      Flags: 0,
+      Destination: hook_account,
+      HookParameters: [
+        {
+          HookParameter: {
+            HookParameterName: "44454C45",
+            HookParameterValue: "hook_account_in_hex",
+          },
+        },
+        ],
+      ...networkInfo.txValues,
+    };
+
 
 ## How to install the Stop Me Hook on Mainnet?
 
