@@ -31,7 +31,7 @@ If we want to change the Backup Account for another account, we create an Invoke
 If we want to completely eliminate the administration of the Backup Account and that the hook account no longer has a manager, we create an Invoke operation with origin the backup account and destination the hook account. As Hook parameter we will add DELE and as value the account translated to HEX where the hook is installed.
 
 
-## How to install the Stop Me Hook on Mainnet?
+## How to install the Stop Me Hook on Testnet?
 
 HookHash: E31E3F125C377E89ACC76610DD017FBEE434FB5BDAE86DEF3C345B994916C64F
 
