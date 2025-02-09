@@ -238,6 +238,7 @@ This is just a small example so that others can build similar ideas or extend th
 2. Let several accounts be administrators of the management of the hook account instead of having only one backup account.
 3. That the blocking of payments is from a certain amount.
 4. That in case of detecting a strange situation, all the money is sent to the backup account or to another account for security.
+5. Stop more types of transactions, you can check the codes here: [](https://docs.xahau.network/technical/hooks-c-functions/originating-transaction/otxn_type)
 
 ## Special thanks
 
