@@ -136,7 +136,7 @@ Hook Parameters and values will be:
 - ACTI
 - 01
 
-
+```
     const prepared = {
       TransactionType: "Invoke",
       Account: backup_account_address,
@@ -151,7 +151,8 @@ Hook Parameters and values will be:
         },
         ],
       ...networkInfo.txValues,
-    };
+    }; 
+```
 
 ## Disabling Flag (Allowing outgoing payments from the hook account)
 
@@ -161,7 +162,7 @@ Hook Parameters and values will be:
 - ACTI
 - 00
 
-
+```
     const prepared = {
       TransactionType: "Invoke",
       Account: backup_account_address,
@@ -177,7 +178,7 @@ Hook Parameters and values will be:
         ],
       ...networkInfo.txValues,
     };
-
+```
 ## Deleting Backup Account and Flag
 
 When we want to delete the backup account and delete the ACTI flag, we create an Invoke transaction with the backup account as "Account" and hook account as "Destination".
