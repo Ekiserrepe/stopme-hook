@@ -7,6 +7,8 @@ Stop Me Hook is a hook programmed in C for the Xahau blockchain. A hook is a ser
 
 Stop Me Hook is a simple idea for others to use to create more sophisticated and customizable hooks.
 
+**UPDATE:** A [Javascript Hook has been released](https://github.com/Ekiserrepe/stopme-hook/blob/main/stopme.ts). You can try it copying the code in the [JS Hooks Builder](https://jshooks-builder.xahau.network).
+
 ## Explanation
 
 
@@ -49,6 +51,32 @@ HookOn is activated to trigger for Invoke and Payment transactions. You can veri
         {
           "Hook": {
             "HookHash": "1A9D1EEA98A9BE3C45A35872E51E36B6E73CBB7033A96CE0D98DB484215E0494",
+            "HookNamespace": "0000000000000000000000000000000000000000000000000000000000000000",
+            "HookOn": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFFFFFFFFFFFFFBFFFFE",
+          }
+        }
+      ],
+      ...networkInfo.txValues,
+    };
+
+## How to install the Stop Me Hook on JS Hooks Testnet?
+
+HookHash: 97C08A328E7B76C45872B508103FD0EDBB6FBC6FFFE5D21FE5404D3DB924A8F2
+
+1. You can do it by (XRPLWin Hook Install Tool)[https://xahau-testnet.xrplwin.com/tools/hook/from-hash]
+
+2. Or you can do it sending the transaction below:
+
+HookOn is activated to trigger for Invoke and Payment transactions. You can verify it copying the HookOn value (FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFFFFFFFFFFFFFBFFFFE) in this website: https://richardah.github.io/xrpl-hookon-calculator/
+
+    const prepared = {
+      "TransactionType": "SetHook",
+      "Account": your_account_address,
+      "Flags": 0,
+      "Hooks": [
+        {
+          "Hook": {
+            "HookHash": "97C08A328E7B76C45872B508103FD0EDBB6FBC6FFFE5D21FE5404D3DB924A8F2",
             "HookNamespace": "0000000000000000000000000000000000000000000000000000000000000000",
             "HookOn": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFFFFFFFFFFFFFBFFFFE",
           }
@@ -243,4 +271,4 @@ This is just a small example so that others can build similar ideas or extend th
 
 ## Special thanks
 
-Thanks to [@denis_angell](https://x.com/angell_denis) and [@Satish_nl](https://x.com/angell_denis) for being there when i get stuck.
+Thanks to [@angell_denis](https://x.com/angell_denis), [@Satish_nl](https://x.com/satish_nl) and  [@tequ](https://x.com/_tequ_) for being there when i get stuck.
